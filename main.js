@@ -17,7 +17,7 @@ function shorturl() {
     .then(function (myJson) {
       res = myJson;
       document.getElementById("addBtn").disabled = false;
-      document.getElementById("addBtn").innerHTML = 'Shorten it';
+      document.getElementById("addBtn").innerHTML = '缩短它';
 
       // 成功生成短链
       if (res.status == "200") {
@@ -39,7 +39,7 @@ function shorturl() {
       alert("Unknow error. Please retry!");
       console.log(err);
       document.getElementById("addBtn").disabled = false;
-      document.getElementById("addBtn").innerHTML = 'Shorten it';
+      document.getElementById("addBtn").innerHTML = '缩短它';
     })
 }
 function copyurl(id, attr) {
