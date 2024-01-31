@@ -43,7 +43,7 @@ function shorturl() {
 
         document.getElementById("result").innerHTML = window.location.protocol + "//" + window.location.host + "/" + res.key;
         // 生成二维码
-        qr.makeCode(link);
+        qr.makeCode(res.key);
       } else {
         // 清空二维码
         qr.clear();
