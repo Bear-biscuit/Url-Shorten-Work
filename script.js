@@ -4,8 +4,8 @@ var linkInput = document.getElementById("longURL");
 var generateButton = document.getElementById("generate-button");
 var qrcode = document.getElementById("qrcode");
 function isValidURL(url) {
-    // 匹配以域名结尾的链接
-    var pattern = /^[a-zA-Z0-9]+([\-\.]{1}[a-zA-Z0-9]+)*\.[a-zA-Z]{2,5}(:[0-9]{1,5})?(\/.*)?$/;
+    // 匹配常见的 URL 格式（可能不涵盖所有情况，但适用于大多数常见情况）
+    var pattern = /^(ftp|http|https):\/\/[^ "]+$/;
     return pattern.test(url);
 }
 // 创建一个QRCode对象
@@ -25,11 +25,6 @@ generateButton.addEventListener("click", function () {
     var input = document.getElementById("longURL").value; // 假设文本框的id为myInput
     if (isValidURL(input)) {
         if (link) {
-            // 如果输入的链接不是以 "https://" 开头，则自动添加
-            if (link !== '' && !link.startsWith('https://')) {
-                link = 'https://' + link;
-                linkInput.value = link;
-            }
             // 生成二维码
             qr.makeCode(link);
         } else {
