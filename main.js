@@ -1,3 +1,16 @@
+var linkInput = document.getElementById("longURL");
+var generateButton = document.getElementById("addBtn");
+var qrcode = document.getElementById("qrcode");
+
+// 创建一个QRCode对象
+var qr = new QRCode(qrcode, {
+  width: 200,
+  height: 200,
+  colorDark: "#000000",
+  colorLight: "#ffffff",
+  correctLevel: QRCode.CorrectLevel.H
+});
+
 let res
 function shorturl() {
   if (document.querySelector("#longURL").value == "") {
@@ -29,7 +42,11 @@ function shorturl() {
         addUrlToList(keyPhrase, valueLongURL)
 
         document.getElementById("result").innerHTML = window.location.protocol + "//" + window.location.host + "/" + res.key;
+        // 生成二维码
+        qr.makeCode(link);
       } else {
+        // 清空二维码
+        qr.clear();
         document.getElementById("result").innerHTML = res.error;
       }
 
